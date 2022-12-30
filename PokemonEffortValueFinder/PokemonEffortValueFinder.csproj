@@ -15,7 +15,7 @@
 		<ApplicationTitle>PokemonEffortValueFinder</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.pokemoneffortvaluefinder</ApplicationId>
+		<ApplicationId>limali.pokemoneffortvaluefinder</ApplicationId>
 		<ApplicationIdGuid>4b931077-5935-4055-82ca-f5d377c49ee1</ApplicationIdGuid>
 
 		<!-- Versions -->
