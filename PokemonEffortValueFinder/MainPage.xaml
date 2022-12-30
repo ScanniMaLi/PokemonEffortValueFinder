@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:lib="clr-namespace:PokemonEffortValueFinder.Core;assembly=PokemonEffortValueFinder.Core" xmlns:local="clr-namespace:PokemonEffortValueFinder" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:DataType="local:MainPage" x:Class="PokemonEffortValueFinder.MainPage" Padding="0">
+    <Grid x:Name="grdMain" HorizontalOptions="Center" RowSpacing="12" Margin="0,8,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start">
+            <Picker ItemsSource="{Binding EffortValueNames}" x:Name="PickerEffortValue" ItemDisplayBinding="{Binding Path=Name}" SelectedItem="{Binding SelectedEffortValueName}" SelectedIndexChanged="Picker_SelectedIndexChanged" Title="EV Stat:" WidthRequest="200" VerticalOptions="Start" />
+        </HorizontalStackLayout>
+        <CollectionView Grid.Row="1" x:Name="TablePokemon" VerticalScrollBarVisibility="Always" ItemsSource="{Binding PokemonList}" ItemsLayout="VerticalGrid" ItemSizingStrategy="MeasureFirstItem" MaximumWidthRequest="380" VerticalOptions="Fill">
+            <CollectionView.Header>
+                <Grid ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Label FontAttributes="Bold" Text="Pokémon" Grid.Column="0" FontSize="Small" HorizontalTextAlignment="Center" />
+                    <Label FontAttributes="Bold" Text="EV" Grid.Column="1" FontSize="Small" HorizontalTextAlignment="Center" />
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="lib:Pokemon">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="2" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Padding="0,8" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                                <Grid MinimumHeightRequest="70" HorizontalOptions="Fill" Margin="0,0,0,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Column="0" VerticalOptions="Fill" Source="{Binding Path=IconUrl}" MaximumWidthRequest="50" HorizontalOptions="Fill" />
+                                    <Label Margin="8,0" Grid.Column="1" VerticalTextAlignment="Center" Text="{Binding Path=Number,StringFormat='# {0:0000}'}" FontSize="Small" />
+                                </Grid>
+                                <Label Text="{Binding Path=Name}" FontSize="Small" />
+                                <Label Text="{Binding Path=Form}" FontSize="Caption" />
+                                <Button x:Name="ButtonDetails" CommandParameter="{Binding Path=DetailUrl}" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=DetailCommand}" Margin="0,8" Text="Detail" FontSize="Small" />
+                            </VerticalStackLayout>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label Text="HP:" Grid.Column="0" Grid.Row="0" FontSize="Small" />
+                                <Label Text="Attack:" Grid.Column="0" Grid.Row="1" FontSize="Small" />
+                                <Label Text="Defense:" Grid.Column="0" Grid.Row="2" FontSize="Small" />
+                                <Label Text="Special Attack:" Grid.Column="0" Grid.Row="3" FontSize="Small" />
+                                <Label Text="Special Defense:" Grid.Column="0" Grid.Row="4" FontSize="Small" />
+                                <Label Text="Speed:" Grid.Column="0" Grid.Row="5" FontSize="Small" />
+                                <Label Text="{Binding Path=EffortValueYield.HealthPoints}" Grid.Column="1" Grid.Row="0" FontSize="Small" />
+                                <Label Text="{Binding Path=EffortValueYield.Attack}" Grid.Column="1" Grid.Row="1" FontSize="Small" />
+                                <Label Text="{Binding Path=EffortValueYield.Defense}" Grid.Column="1" Grid.Row="2" FontSize="Small" />
+                                <Label Text="{Binding Path=EffortValueYield.SpecialAttack}" Grid.Column="1" Grid.Row="3" FontSize="Small" />
+                                <Label Text="{Binding Path=EffortValueYield.SpecialDefense}" Grid.Column="1" Grid.Row="4" FontSize="Small" />
+                                <Label Text="{Binding Path=EffortValueYield.Speed}" Grid.Column="1" Grid.Row="5" FontSize="Small" />
+                            </Grid>
+                        </Grid>
+                        <BoxView Grid.Row="1" BackgroundColor="Black" HeightRequest="1" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
