@@ -1,5 +1,8 @@
 # Pokémon EV Finder
 
+![](https://github.com/ScanniMaLi/PokemonEffortValueFinder/blob/master/Images/filtered_attack_iron.png?raw=true "Attack EV filtered with 'iron'")
+![](https://github.com/ScanniMaLi/PokemonEffortValueFinder/blob/master/Images/unfiltered_noname.png?raw=true "All Pokémon unfiltered")
+
 ## Building the App
 
 ### Android
