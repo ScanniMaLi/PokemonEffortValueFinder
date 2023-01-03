@@ -7,6 +7,7 @@
         </Grid.RowDefinitions>
         <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Start">
             <Picker ItemsSource="{Binding EffortValueNames}" x:Name="PickerEffortValue" ItemDisplayBinding="{Binding Path=Name}" SelectedItem="{Binding SelectedEffortValueName}" SelectedIndexChanged="Picker_SelectedIndexChanged" Title="EV Stat:" WidthRequest="200" VerticalOptions="Start" />
+			<Entry x:Name="EntryPokemonName" Placeholder="Search Pokémon..." TextChanged="EntryPokemonName_TextChanged" Text="{Binding PokemonName}"/>
         </HorizontalStackLayout>
         <CollectionView Grid.Row="1" x:Name="TablePokemon" VerticalScrollBarVisibility="Always" ItemsSource="{Binding PokemonList}" ItemsLayout="VerticalGrid" ItemSizingStrategy="MeasureFirstItem" MaximumWidthRequest="380" VerticalOptions="Fill">
             <CollectionView.Header>

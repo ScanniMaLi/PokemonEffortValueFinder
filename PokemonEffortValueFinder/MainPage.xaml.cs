@@ -38,7 +38,7 @@ namespace PokemonEffortValueFinder
         {
             pokemonList.Clear();
             Pokemon[] withdrawnPkmn;
-            try 
+            try
             {
                 withdrawnPkmn = await PokemonBox.WithdrawAll();
             }
@@ -48,7 +48,7 @@ namespace PokemonEffortValueFinder
                 App.Current.Quit();
                 return;
             }
-            
+
             foreach (Pokemon pkmn in withdrawnPkmn)
             {
                 this.pokemonList.Add(pkmn);
@@ -68,38 +68,41 @@ namespace PokemonEffortValueFinder
             pokemonList.Clear();
             foreach (Pokemon pkmn in allPokemon)
             {
-                if (selectedEffortValueName.Id == EffortIdAll) 
+                if (string.IsNullOrWhiteSpace(pokemonName) || pkmn.Name.Contains(PokemonName,StringComparison.OrdinalIgnoreCase))
                 {
-                    this.pokemonList.Add(pkmn);
-                }
-                else if (selectedEffortValueName.Id == EffortIdHp && pkmn.EffortValueYield.HealthPoints > 0) 
-                {
-                    this.pokemonList.Add(pkmn);
-                }
-                else if (selectedEffortValueName.Id == EffortIdAttack && pkmn.EffortValueYield.Attack > 0)
-                {
-                    this.pokemonList.Add(pkmn);
-                }
-                else if (selectedEffortValueName.Id == EffortIdDefense && pkmn.EffortValueYield.Defense > 0)
-                {
-                    this.pokemonList.Add(pkmn);
-                }
-                else if (selectedEffortValueName.Id == EffortIdSpecialAttack && pkmn.EffortValueYield.SpecialAttack > 0)
-                {
-                    this.pokemonList.Add(pkmn);
-                }
-                else if (selectedEffortValueName.Id == EffortIdSpecialDefense && pkmn.EffortValueYield.SpecialDefense > 0)
-                {
-                    this.pokemonList.Add(pkmn);
-                }
-                else if (selectedEffortValueName.Id == EffortIdSpeed && pkmn.EffortValueYield.Speed > 0)
-                {
-                    this.pokemonList.Add(pkmn);
+                    if (selectedEffortValueName.Id == EffortIdAll)
+                    {
+                        this.pokemonList.Add(pkmn);
+                    }
+                    else if (selectedEffortValueName.Id == EffortIdHp && pkmn.EffortValueYield.HealthPoints > 0)
+                    {
+                        this.pokemonList.Add(pkmn);
+                    }
+                    else if (selectedEffortValueName.Id == EffortIdAttack && pkmn.EffortValueYield.Attack > 0)
+                    {
+                        this.pokemonList.Add(pkmn);
+                    }
+                    else if (selectedEffortValueName.Id == EffortIdDefense && pkmn.EffortValueYield.Defense > 0)
+                    {
+                        this.pokemonList.Add(pkmn);
+                    }
+                    else if (selectedEffortValueName.Id == EffortIdSpecialAttack && pkmn.EffortValueYield.SpecialAttack > 0)
+                    {
+                        this.pokemonList.Add(pkmn);
+                    }
+                    else if (selectedEffortValueName.Id == EffortIdSpecialDefense && pkmn.EffortValueYield.SpecialDefense > 0)
+                    {
+                        this.pokemonList.Add(pkmn);
+                    }
+                    else if (selectedEffortValueName.Id == EffortIdSpeed && pkmn.EffortValueYield.Speed > 0)
+                    {
+                        this.pokemonList.Add(pkmn);
+                    }
                 }
             }
         }
 
-        private void SortPokemon() 
+        private void SortPokemon()
         {
             IEnumerable<Pokemon> sortedPokemon;
 
@@ -127,13 +130,13 @@ namespace PokemonEffortValueFinder
             {
                 sortedPokemon = pokemonList.OrderByDescending(pkmn => pkmn.EffortValueYield.Speed).ThenByDescending(pkmn => pkmn.Number);
             }
-            else 
+            else
             {
                 return;
             }
             sortedPokemon = sortedPokemon.ToList();
             pokemonList.Clear();
-            foreach (var pokemon in sortedPokemon) 
+            foreach (var pokemon in sortedPokemon)
             {
                 pokemonList.Add(pokemon);
             }
@@ -166,6 +169,7 @@ namespace PokemonEffortValueFinder
         }
 
         private ObservableCollection<Pokemon> pokemonList = new ObservableCollection<Pokemon>();
+
         public ObservableCollection<Pokemon> PokemonList
         {
             get { return pokemonList; }
@@ -178,6 +182,27 @@ namespace PokemonEffortValueFinder
             System.Diagnostics.Debug.WriteLine(SelectedEffortValueName.Name);
             this.FilterPokemon();
             this.SortPokemon();
+        }
+
+        private void EntryPokemonName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.FilterPokemon();
+            this.SortPokemon();
+        }
+
+        private string pokemonName = string.Empty;
+        public string PokemonName
+        {
+            get
+            {
+                return pokemonName;
+            }
+
+            set
+            {
+                pokemonName = value;
+                this.OnPropertyChanged(nameof(PokemonName));
+            }
         }
     }
 }
