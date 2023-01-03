@@ -5,9 +5,9 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonEffortValueFinder.Core", "PokemonEffortValueFinder.Core\PokemonEffortValueFinder.Core.csproj", "{61CEA107-D807-47A3-8A30-997AAE152CEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonEffortValueFinder", "PokemonEffortValueFinder\PokemonEffortValueFinder.csproj", "{E52FCA01-FAF4-43E3-961C-4A1AB39145BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonEffortValueFinder", "PokemonEffortValueFinder\PokemonEffortValueFinder.csproj", "{E52FCA01-FAF4-43E3-961C-4A1AB39145BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonEffortValueFinder.Launcher", "PokemonEffortValueFinder.Launcher\PokemonEffortValueFinder.Launcher.csproj", "{D6A4F21E-EB15-4525-8A88-C6E6AE1668CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonEffortValueFinder.Launcher", "PokemonEffortValueFinder.Launcher\PokemonEffortValueFinder.Launcher.csproj", "{D6A4F21E-EB15-4525-8A88-C6E6AE1668CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,7 +28,6 @@ Global
 		{D6A4F21E-EB15-4525-8A88-C6E6AE1668CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6A4F21E-EB15-4525-8A88-C6E6AE1668CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6A4F21E-EB15-4525-8A88-C6E6AE1668CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6A4F21E-EB15-4525-8A88-C6E6AE1668CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
